@@ -63,7 +63,18 @@ Credentials need to be supplied to be able to download the code package. They ca
 })
 ```
 
+Note that this will expose the credentials in the shell script that is generated i.e.
+
+`madhurMovies218892mid13433160.sh` will have the following contents present:
+
+```bash
+export AWS_ACCESS_KEY_ID='XXXX'
+export AWS_SECRET_ACCESS_KEY='YYYY'
+```
+
 - hydrating environment variables with the @secrets decorator from a secret manager.
+
+PS -- If you are on the [Outerbounds](https://outerbounds.com/) platform, the auth is taken care of and there is no need to fiddle with it.
 
 ## Things to be taken care of
 
