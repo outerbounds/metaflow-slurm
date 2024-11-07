@@ -8,7 +8,7 @@ from metaflow import util
 from metaflow import R
 from metaflow.exception import METAFLOW_EXIT_DISALLOW_RETRY
 from metaflow.metaflow_config import DATASTORE_LOCAL_DIR
-from metaflow.metadata.util import sync_local_metadata_from_datastore
+from metaflow.metadata_provider.util import sync_local_metadata_from_datastore
 from metaflow.mflog import TASK_LOG_SOURCE
 
 from .slurm_exceptions import SlurmKilledException

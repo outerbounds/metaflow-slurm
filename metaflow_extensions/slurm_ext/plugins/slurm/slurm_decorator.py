@@ -2,8 +2,8 @@ import os
 import sys
 
 from metaflow import R
-from metaflow.metadata import MetaDatum
-from metaflow.metadata.util import sync_local_metadata_to_datastore
+from metaflow.metadata_provider import MetaDatum
+from metaflow.metadata_provider.util import sync_local_metadata_to_datastore
 from metaflow.sidecar import Sidecar
 from metaflow.decorators import StepDecorator
 from metaflow.exception import MetaflowException
