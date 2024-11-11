@@ -21,6 +21,40 @@ from .slurm_exceptions import SlurmException
 
 
 class SlurmDecorator(StepDecorator):
+    """
+    Specifies that this step should execute on a Slurm Cluster.
+
+    Parameters
+    ----------
+    username : str, optional, default None
+        Username for logging into the Slurm login node. If not specified,
+        defaults to METAFLOW_SLURM_USERNAME environment variable.
+    address : str, optional, default None
+        IP address or hostname of the Slurm login node. If not specified,
+        defaults to METAFLOW_SLURM_ADDRESS environment variable.
+    ssh_key_file : str, optional, default None
+        Path to SSH key file for authentication with the login node. If not specified,
+        defaults to METAFLOW_SLURM_SSH_KEY_FILE environment variable.
+    cert_file : str, optional, default None
+        Path to certificate file for authentication. If not specified,
+        defaults to METAFLOW_SLURM_CERT_FILE environment variable.
+    remote_workdir : str, optional, default None
+        Working directory on the remote Slurm cluster where job files will be stored.
+        If not specified, defaults to METAFLOW_SLURM_REMOTE_WORKDIR environment variable.
+    cleanup : bool, default False
+        If True, cleanup created artifacts on Slurm after job completion. This doesn't
+        delete the log files.
+    partition : str, optional, default None
+        Slurm partition to submit the job to.
+    nodes : int, optional, default None
+        Number of nodes to allocate for the job.
+    ntasks : int, optional, default None
+        Number of tasks for the job.
+    cpus_per_task : int, optional, default None
+        Number of CPUs to allocate per task.
+    memory : str, optional, default None
+        Memory requirement for the job (e.g., '8GB', '16GB').
+    """
     name = "slurm"
 
     defaults = {

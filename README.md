@@ -16,6 +16,11 @@ This extension adds support for executing steps in Metaflow Flows on SLURM clust
 )
 ```
 
+Note that the above parameters can also be configured via the following environment variables:
+- `METAFLOW_SLURM_USERNAME`
+- `METAFLOW_SLURM_ADDRESS`
+- `METAFLOW_SLURM_SSH_KEY_FILE`
+
 The step that is decorated with `@slurm` will create the following directory structure on the cluster.
 
 ```bash
