@@ -57,7 +57,7 @@ class Slurm(object):
         self.datastore = datastore
         self.metadata = metadata
         self.environment = environment
-        self.python3_executable = slurm_access_params.pop("path_to_python3", None) or "/usr/bin/python3"
+        self.python3_executable = slurm_access_params.pop("path_to_python3", None) or "python"
         self.slurm_client = SlurmClient(**slurm_access_params)
         atexit.register(lambda: self.job.kill() if hasattr(self, "job") else None)
 
