@@ -115,6 +115,7 @@ class Slurm(object):
             '${METAFLOW_INIT_SCRIPT:+eval \\"${METAFLOW_INIT_SCRIPT}\\"} && %s'
             % cmd_str
         )
+        cmd_str = 'python() { /usr/bin/python3 \\"$@\\"; }; export -f python && %s' % cmd_str
 
         return shlex.split('bash -c "%s"' % cmd_str)
 
