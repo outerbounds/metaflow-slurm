@@ -85,6 +85,13 @@ PS -- If you are on the [Outerbounds](https://outerbounds.com/) platform, the au
 
 - The extension runs workloads via shell scripts and `sbatch` in a linux native environment
     - i.e. the workloads are NOT run inside docker containers
-    - As such, the compute instances should not have `python2` installed and both `python` and `python3` should refer to a python version above 3.8 preferrably.
+    - As such, the compute instances should have `python3` installed (above 3.8 preferrably)
+    - If the default `python` points to `python2`, one can use the `path_to_python3` argument of the decorator i.e.
+
+```py
+@slurm(
+    path_to_python3="/usr/bin/python3",
+)
+```
 
 ### Fin.
