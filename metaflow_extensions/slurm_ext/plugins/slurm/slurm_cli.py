@@ -41,6 +41,7 @@ def slurm():
 @click.option("--ssh-key-file", help="SSH key file for login node for Slurm.")
 @click.option("--cert-file", help="Certificate file for login node for Slurm.")
 @click.option("--remote-workdir", help="Remote working directory for Slurm.")
+@click.option("--path-to-python3", help="Path to python3 executable on Slurm.")
 @click.option(
     "--cleanup", help="Cleanup created artifacts on Slurm.", is_flag=True, default=False
 )
@@ -88,6 +89,7 @@ def step(
     ssh_key_file=None,
     cert_file=None,
     remote_workdir=None,
+    path_to_python3=None,
     cleanup=False,
     partition=None,
     nodes=None,
@@ -206,6 +208,7 @@ def step(
                 "ssh_key_file": ssh_key_file,
                 "cert_file": cert_file,
                 "remote_workdir": remote_workdir,
+                "path_to_python3": path_to_python3,
                 "cleanup": cleanup,
             },
         )

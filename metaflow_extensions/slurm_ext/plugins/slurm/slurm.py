@@ -57,6 +57,7 @@ class Slurm(object):
         self.datastore = datastore
         self.metadata = metadata
         self.environment = environment
+        self.python3_executable = slurm_access_params.pop("path_to_python3", None) or "/usr/bin/python3"
         self.slurm_client = SlurmClient(**slurm_access_params)
         atexit.register(lambda: self.job.kill() if hasattr(self, "job") else None)
 
@@ -115,7 +116,7 @@ class Slurm(object):
             '${METAFLOW_INIT_SCRIPT:+eval \\"${METAFLOW_INIT_SCRIPT}\\"} && %s'
             % cmd_str
         )
-        cmd_str = 'python() { /usr/bin/python3 \\"$@\\"; }; export -f python && %s' % cmd_str
+        cmd_str = 'python() { %s \\"$@\\"; }; export -f python && %s' % (self.python3_executable, cmd_str)
 
         return shlex.split('bash -c "%s"' % cmd_str)
 

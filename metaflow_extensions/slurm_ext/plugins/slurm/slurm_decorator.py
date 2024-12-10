@@ -41,6 +41,8 @@ class SlurmDecorator(StepDecorator):
     remote_workdir : str, optional, default None
         Working directory on the remote Slurm cluster where job files will be stored.
         If not specified, defaults to METAFLOW_SLURM_REMOTE_WORKDIR environment variable.
+    path_to_python3: str, optional, default None
+        The path to the python3 executable on the Slurm cluster.
     cleanup : bool, default False
         If True, cleanup created artifacts on Slurm after job completion. This doesn't
         delete the log files.
@@ -63,6 +65,7 @@ class SlurmDecorator(StepDecorator):
         "ssh_key_file": None,
         "cert_file": None,
         "remote_workdir": None,
+        "path_to_python3": None,
         "cleanup": False,
         "partition": None,
         "nodes": None,
