@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Optional
 from .slurm_exceptions import SlurmException
 
-
 _LOAD_SLURM_PREFIX = """\
 source /etc/profile
 module whatis slurm &> /dev/null
@@ -69,6 +68,7 @@ class SlurmClient(object):
                 username=self.username,
                 client_keys=self.client_keys,
                 known_hosts=None,
+                connect_timeout=30,
             )
 
         except Exception as e:
