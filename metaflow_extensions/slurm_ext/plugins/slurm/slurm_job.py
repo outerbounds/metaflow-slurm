@@ -102,15 +102,15 @@ class SlurmJob(object):
         return self
 
     def cpus_per_task(self, cpus_per_task):
-        self.kwargs["cpus-per-task"] = cpus_per_task
+        self.kwargs["cpus_per_task"] = cpus_per_task
         return self
 
     def memory(self, memory):
-        self.kwargs["mem"] = memory
+        self.kwargs["memory"] = memory
         return self
 
     def run_time_limit(self, run_time_limit):
-        self.kwargs["time"] = run_time_limit
+        self.kwargs["run_time_limit"] = run_time_limit
         return self
 
 
