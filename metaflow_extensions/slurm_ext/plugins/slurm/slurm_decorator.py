@@ -206,7 +206,7 @@ class SlurmDecorator(StepDecorator):
 
         try:
             self._save_logs_sidecar.terminate()
-        except:
+        except Exception:
             # Best effort kill
             pass
 
