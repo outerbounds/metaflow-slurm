@@ -138,36 +138,3 @@ class SlurmClient(object):
         proc = await self.conn.run(cmd_scancel)
         if proc.returncode != 0:
             raise RuntimeError(proc.stderr.strip())
-
-
-async def main():
-
-    sc = SlurmClient(
-        username="ubuntu",
-        address="18.236.81.10",
-        ssh_key_file="~/Desktop/outerbounds/parallelcluster/madhur-slurm.pem",
-    )
-    await sc.connect()
-
-    script_contents = """
-#!/bin/bash
-#SBATCH --job-name=python_job        # Job name
-#SBATCH --output=python_job.out      # Standard output log
-#SBATCH --error=python_job.err       # Standard error log
-#SBATCH --time=00:10:00              # Walltime
-#SBATCH --partition=queue1           # Partition name
-#SBATCH --nodes=1                    # Number of nodes
-#SBATCH --ntasks=1                   # Number of tasks
-#SBATCH --cpus-per-task=4            # Number of CPU cores per task
-#SBATCH --mem=4G                     # Memory per node
-
-# Run the Python script
-srun python compute_np.py
-""".strip()
-
-    jid = await sc.submit("madhur", script_contents)
-    print("id: %s" % jid)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
