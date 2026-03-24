@@ -1,7 +1,7 @@
 import uuid
 from string import Template
 from typing import Dict, Optional
-
+from shlex import quote
 
 SLURM_JOB_SCRIPT_TEMPLATE = """\
 #!/bin/bash
@@ -97,11 +97,7 @@ class SlurmJobScript(object):
             "source %s" % self.bashrc_path if self.bashrc_path else "",
         ]
         for key, value in self.env_vars.items():
-            if key == "METAFLOW_INIT_SCRIPT":
-                # this needs outer double quotes
-                setup_lines.append('export %s="%s"' % (key, value))
-            else:
-                setup_lines.append("export %s='%s'" % (key, value))
+            setup_lines.append("export %s=%s" % (key, quote(str(value))))
         return "\n".join(setup_lines)
 
     def get_run_command(
