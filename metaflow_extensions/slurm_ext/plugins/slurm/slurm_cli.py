@@ -74,8 +74,8 @@ def slurm():
 )
 @click.option(
     "--run-time-limit",
-    default=5 * 24 * 60 * 60,  # Default is set to 5 days
-    help="Run time limit in seconds for Slurm job.",
+    default=5 * 24 * 60,  # Default is set to 5 days (in minutes, as SLURM interprets bare integers as minutes)
+    help="Run time limit in minutes for Slurm job.",
 )
 @click.pass_context
 def step(
